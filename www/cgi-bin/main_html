@@ -1,0 +1,75 @@
+<script>
+
+function   AddDataPost(sUserId,sUserName)     
+{   
+	var obj = new ActiveXObject("Microsoft.XMLHTTP");
+
+	sUserId = escape(sUserId);
+	sUserName = escape(sUserName);
+	var userInfo = "userid="+sUserId+"&username="+sUserName;
+	obj.open("POST","getData.asp",false);
+	obj.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	obj.send(userInfo);
+	return   unescape(obj.responseText);
+} 
+
+function show()
+{ 
+	var date = new Date();
+	var now = ""; 
+	now = date.getFullYear()+"年"; 
+	now = now + (date.getMonth()+1)+"月";
+	now = now + date.getDate()+"日"; 
+	now = now + date.getHours()+"时"; 
+	now = now + date.getMinutes()+"分"; 
+	now = now + date.getSeconds()+"秒"; 
+	document.getElementById("nowDiv").innerHTML = now;
+	setTimeout("show()",1000); 
+} 
+</script>
+
+<html>
+	<head>
+	<title>智能网络家电主页面</title>
+	</head>
+	<body bgcolor="Silver">
+	<center>
+	<h2 align=center><font color=Blue><body onload="show()">
+	<div id="nowDiv"></div></h2></font> 
+	</body>
+	
+	<br>
+	<h1 align="center"><font color="crimson">智能网络家居系统</h1>
+	<br><br><br>
+			
+	<FORM  METHOD="post">	
+	<p><font color="red"><h2 align=center> 温&nbsp;&nbsp;&nbsp;&nbsp;度
+$FLAG1$</h2><b>
+	<p><font color="red"><h2 align=center> 湿&nbsp;&nbsp;&nbsp;&nbsp;度
+$FLAG2$</h2><b>
+	<p><font color="red"><h2 align=center> 粉尘浓度
+$FLAG3$</h2><b>
+	
+	<br><br><br>
+	<input type="submit" name="view" value=" 查 看 ">
+	</FORM>
+	<br></b>
+
+	<h1 align="center"><font color="orangered">电灯控制</h1>
+	<br>
+	
+	<FORM  METHOD="post">
+$FLAG4$
+	<br>
+	<input type="submit" name="led1" value=" 卧  室 ">　　
+	<input type="submit" name="led2" value=" 厨  房 ">　　
+	<input type="submit" name="led3" value=" 客  厅 ">　　
+	<input type="submit" name="led4" value=" 卫生间 ">　　
+	<br>
+　
+	</FORM>                            
+	</center>
+	</body>
+	</html>
+	<a href="http://www.baidu.com"> < 返  回 > </a>
+	<p><font color="black" size="4"></center></p>
